@@ -13,7 +13,7 @@ import { startTime } from '../index';
  * Again, this is because it serves to wrap the rest of our application with the Provider
  * component to make the Redux store available to the rest of the app.
  */
-export default class App extends Component {
+class App extends Component {
   componentDidMount() {
     const { actions } = this.props;
     actions.updateBenchmark(new Date().getTime() - startTime);
@@ -21,17 +21,17 @@ export default class App extends Component {
 
   render() {
     const { projects, benchmark, personalInfo } = this.props;
-    const projectEntries = projects.map((project, index) => {
-      return <Project key={index} project={project} />;
-    });
+    const projectEntries = projects.map((project, index) => (
+      <Project key={index} project={project} />
+    ));
     // we can use ES6's object destructuring to effectively 'unpack' our props
     return (
       <div className="main-app-container">
-        <Header personalInfo={personalInfo} />
         <Statistics benchmark={benchmark} />
+        <Header personalInfo={personalInfo} />
+        <br />
         <div className="main-app-nav">Selected Projects</div>
-        {/* notice that we then pass those unpacked props into the Counter component */}
-          {projectEntries}
+        {projectEntries}
         <Footer personalInfo={personalInfo} />
       </div>
     );

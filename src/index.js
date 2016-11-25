@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 /*
  * Import the stylesheet you want used! Here we just reference
  * the main SCSS file we have in the styles directory.
@@ -18,8 +19,13 @@ import { Root } from './containers/Root';
 export const startTime = new Date().getTime();
 
 const store = configureStore();
+const RootApp = () => (
+  <MuiThemeProvider>
+    <Root store={store} />
+  </MuiThemeProvider>
+);
 
 ReactDOM.render(
-  <Root store={store}/>,
+  <RootApp />,
   document.getElementById('root')
 );
