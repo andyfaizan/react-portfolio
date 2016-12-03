@@ -27,12 +27,12 @@ class App extends Component {
     // we can use ES6's object destructuring to effectively 'unpack' our props
     return (
       <div className="main-app-container">
-        <Statistics benchmark={benchmark} />
         <Header personalInfo={personalInfo} />
         <br />
         <div className="main-app-nav">Selected Projects</div>
         {projectEntries}
         <Footer personalInfo={personalInfo} />
+        <Statistics benchmark={benchmark} />
       </div>
     );
   }

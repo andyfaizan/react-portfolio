@@ -1,5 +1,5 @@
 const personalInfoData = {
-  name: 'Your Name',
+  name: 'Ainuddin Faizan',
   linkedIn: 'https://www.linkedin.com/',
   github: 'https://github.com/',
   angelList: 'https://angel.co/',

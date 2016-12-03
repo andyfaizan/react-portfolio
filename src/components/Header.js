@@ -9,7 +9,10 @@ const propTypes = {
 export default function Header({ personalInfo }) {
   return (
     <div>
-      <AppBar title={<HeaderContents personalInfo={personalInfo} />} />
+      <AppBar
+        title={<HeaderContents personalInfo={personalInfo} />}
+        iconElementLeft={<div />}
+      />
     </div>
   );
 }
