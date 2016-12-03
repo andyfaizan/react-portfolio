@@ -29,8 +29,7 @@ class App extends Component {
       <div className="main-app-container">
         <Header personalInfo={personalInfo} />
         <br />
-        <div className="main-app-nav">Selected Projects</div>
-        {projectEntries}
+        <div style={{ 'align-items': 'center' }}>{projectEntries}</div>
         <Footer personalInfo={personalInfo} />
         <Statistics benchmark={benchmark} />
       </div>
