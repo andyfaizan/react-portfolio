@@ -81,7 +81,7 @@ class App extends Component {
           </div>
           <div className="parallax__layer parallax__layer--base">
             <div className="title">
-              Base Layer Blah
+              Base Layer
             </div>
           </div>
         </div>
