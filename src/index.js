@@ -12,7 +12,7 @@ import './styles/main.scss'
  * See configureStore.js and Root.js for more details.
  */
 
-import { configureStore } from './store/configureStore'
+import { configureStore } from './redux/store/configureStore'
 import { Root } from './containers/Root'
 
 // Benchmark: Start keeping track of time

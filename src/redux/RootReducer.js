@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
-import projects from './projects'
-import benchmark from './benchmark'
-import personalInfo from './personalInfo'
+import projects from './ducks/projects'
+import benchmark from './ducks/benchmark'
+import personalInfo from './ducks/personalInfo'
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -18,7 +17,6 @@ import personalInfo from './personalInfo'
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  counter, // you might be used to: counter: counter,
   projects,
   benchmark,
   personalInfo
