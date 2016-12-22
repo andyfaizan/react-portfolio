@@ -3,5 +3,4 @@
  * within your app. Combined with the DevTools/logger, you can see how state and subsequently
  * your UI is being affected.
  */
- 
-export const UPDATE_BENCHMARK = 'UPDATE_BENCHMARK';
+export const UPDATE_BENCHMARK = 'UPDATE_BENCHMARK'

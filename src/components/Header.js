@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import AppBar from 'material-ui/AppBar';
-import HeaderContents from './HeaderContents';
+import React, { PropTypes } from 'react'
+import AppBar from 'material-ui/AppBar'
+import HeaderContents from './HeaderContents'
 
 const propTypes = {
   personalInfo: PropTypes.object,
-};
+}
 
 export default function Header({ personalInfo }) {
   return (
@@ -14,7 +14,7 @@ export default function Header({ personalInfo }) {
         iconElementLeft={<div />}
       />
     </div>
-  );
+  )
 }
 
-Header.propTypes = propTypes;
+Header.propTypes = propTypes

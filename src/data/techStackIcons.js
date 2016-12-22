@@ -11,6 +11,6 @@ const iconsData = {
   'd3.js': 'https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Logo_D3.svg/1079px-Logo_D3.svg.png',
   Leaflet: 'http://leafletjs.com/docs/images/logo.png',
   Redux: 'https://rawgit.com/gorangajic/react-icons/master/react-icons.svg'
-};
+}
 
-export { iconsData };
+export { iconsData }

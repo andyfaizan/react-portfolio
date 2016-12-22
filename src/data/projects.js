@@ -12,6 +12,6 @@ const projectsData = {
       tech_stack: ['React.js', 'socket.io', 'Redux', 'PostgreSQL', 'Node.js', 'express']
     }
   ]
-};
+}
 
-export { projectsData };
+export { projectsData }

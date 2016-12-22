@@ -1,15 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import '../styles/typing.scss';
-import '../styles/parallax-effects.scss';
-import * as BenchmarkActions from '../actions/BenchmarkActions';
+import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import '../styles/typing.scss'
+import '../styles/parallax-effects.scss'
+import * as BenchmarkActions from '../actions/BenchmarkActions'
 // import Footer from '../components/Footer';
 // import Header from '../components/Header';
 // import Statistics from '../components/Statistics';
-import { startTime } from '../index';
+import { startTime } from '../index'
 
-const VelocityComponent = require('velocity-react/velocity-component');
+const VelocityComponent = require('velocity-react/velocity-component')
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
  * Again, this is because it serves to wrap the rest of our application with the Provider
@@ -18,30 +18,30 @@ const VelocityComponent = require('velocity-react/velocity-component');
 class App extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showSubComponent: true
-    };
-    this.onScroll = this.onScroll.bind(this);
+    }
+    this.onScroll = this.onScroll.bind(this)
   }
 
   componentDidMount() {
-    const { actions } = this.props;
-    actions.updateBenchmark(new Date().getTime() - startTime);
+    const { actions } = this.props
+    actions.updateBenchmark(new Date().getTime() - startTime)
   }
 
   onScroll() {
     if (this.state.showSubComponent) {
-      this.setState({ showSubComponent: false });
+      this.setState({ showSubComponent: false })
     }
   }
 
   render() {
     const addScrollListener = (node) => {
       if (node) {
-        node.addEventListener('scroll', this.onScroll);
+        node.addEventListener('scroll', this.onScroll)
       }
-    };
+    }
 
     return (
       // <div className="main-app-container">
@@ -134,7 +134,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -144,7 +144,7 @@ App.propTypes = {
   // benchmark: PropTypes.number.isRequired,
   // personalInfo: PropTypes.object.isRequired,
   // showSubComponent: PropTypes.bool.isRequired,
-};
+}
 
 function mapStateToProps(state) {
   return {
@@ -152,16 +152,16 @@ function mapStateToProps(state) {
     benchmark: state.benchmark,
     personalInfo: state.personalInfo,
     showSubComponent: 'true',
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(BenchmarkActions, dispatch)
-  };
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)

@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 
 const propTypes = {
   personalInfo: PropTypes.object,
-};
+}
 
 function HeaderContents({ personalInfo }) {
   return (
@@ -62,9 +62,9 @@ function HeaderContents({ personalInfo }) {
         </li>
       </ul>
     </div>
-  );
+  )
 }
 
-HeaderContents.propTypes = propTypes;
+HeaderContents.propTypes = propTypes
 
-export default HeaderContents;
+export default HeaderContents

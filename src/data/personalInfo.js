@@ -5,6 +5,6 @@ const personalInfoData = {
   angelList: 'https://angel.co/',
   email: 'mailto:you@gmail.com',
   resume: 'https://www.dropbox.com/'
-};
+}
 
-export { personalInfoData };
+export { personalInfoData }
