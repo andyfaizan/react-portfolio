@@ -21,15 +21,28 @@
 body { font-family: Consolas, monospace; }
 
 .typed {
-    position: relative;
+    position: absolute;
     float: left;
-    font-size:150%;
+    font-size:250%;
     color: white;
-    left: 50%;
-    top: 30%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    left: 42%;
+    top: 40%;
+    // -webkit-transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
     font-weight: bolder;
+}
+
+.welcome {
+  position: absolute;
+  float: left;
+  font-size:800%;
+  color: white;
+  left: 38%;
+  top: 40%;
+  // -webkit-transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
+  font-weight: bolder;
+  opacity: 0;
 }
 
 .typed-span {
