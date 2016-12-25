@@ -13,13 +13,7 @@ import { personalInfoData } from '../data/personalInfo'
 const VelocityComponent = require('velocity-react/velocity-component')
 // require('velocity-animate')
 // require('velocity-animate/velocity.ui')
-const cx = require('classnames')
-// const ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
-/**
- * It is common practice to have a 'Root' container/component require our main App (this one).
- * Again, this is because it serves to wrap the rest of our application with the Provider
- * component to make the Redux store available to the rest of the app.
- */
+
 class App extends Component {
 
   constructor(props) {
@@ -42,23 +36,15 @@ class App extends Component {
     }
     this.setState({ lastTime: new Date().getTime() })
     const element = this.refs.ele
-    // console.log('Scrolled')
-    // console.log(window)
     const offsets = element.getBoundingClientRect()
-    // console.log(offsets)
     const yOffset = offsets.top
-    // const heightToShow = 1850
     if (yOffset >= 0) {
       this.setState({ hidden: true })
     }
     if (yOffset < 0) {
       this.setState({ hidden: false })
     }
-    // if (this.state.showSubComponent) {
-    //   this.setState({ showSubComponent: false })
-    // }
   }
-
 
   render() {
     const addScrollListener = (node) => {
@@ -67,18 +53,13 @@ class App extends Component {
       }
     }
 
-    const navClasses = cx({
-      fixed: true,
-      // hidden: this.state.hidden
-    })
-
     return (
       <div style={{ width: '100%' }}>
         <VelocityComponent
           animation={{ opacity: this.state.hidden ? 0 : 1, zIndex: 1100 }}
           runOnMount
         >
-          <div className={navClasses} style={{ position: 'fixed', top: 0, left: '0px', right: '0px' }}>
+          <div style={{ position: 'fixed', top: 0, left: '0px', right: '0px' }}>
             <Header personalInfo={personalInfoData} />
           </div>
         </VelocityComponent>

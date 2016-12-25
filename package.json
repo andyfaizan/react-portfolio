@@ -47,7 +47,6 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "file-loader": "^0.8.5",
