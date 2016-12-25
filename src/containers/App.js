@@ -14,6 +14,8 @@ const VelocityComponent = require('velocity-react/velocity-component')
 // require('velocity-animate')
 // require('velocity-animate/velocity.ui')
 const Headroom = require('headroom.js/dist/headroom')
+const cx = require('classnames')
+// const ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
  * Again, this is because it serves to wrap the rest of our application with the Provider
@@ -24,9 +26,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showSubComponent: true
+      hidden: true
     }
-    // this.onScroll = this.onScroll.bind(this)
+    this.onScroll = this.onScroll.bind(this)
   }
 
   // componentDidMount() {
@@ -35,18 +37,36 @@ class App extends Component {
   // }
 
   onScroll() {
-    if (this.state.showSubComponent) {
-      this.setState({ showSubComponent: false })
+    const element = this.refs.ele
+    // console.log('Scrolled')
+    // console.log(window)
+    const offsets = element.getBoundingClientRect()
+    // console.log(offsets)
+    const yOffset = offsets.top
+    const heightToShow = 1850
+    if (yOffset > 0) {
+      this.setState({ hidden: true })
     }
+    if (yOffset < 0) {
+      this.setState({ hidden: false })
+    }
+    // if (this.state.showSubComponent) {
+    //   this.setState({ showSubComponent: false })
+    // }
   }
 
 
   render() {
-    // const addScrollListener = (node) => {
-    //   if (node) {
-    //     node.addEventListener('scroll', this.onScroll)
-    //   }
-    // }
+    const addScrollListener = (node) => {
+      if (node) {
+        node.addEventListener('scroll', this.onScroll)
+      }
+    }
+
+    const navClasses = cx({
+      fixed: true,
+      hidden: this.state.hidden
+    })
 
     const headerInit = (headerElement) => {
       if (headerElement) {
@@ -81,124 +101,104 @@ class App extends Component {
     }
 
     return (
-      <div className="parallax">
-        <div
-          ref={headerInit}
-          style={{
-            headroom: {
-              top: 0,
-              left: 0,
-              right: 0,
-              zIndex: 10,
-            },
-            'headroom--unfixed': {
-              position: 'relative',
-              transform: 'translateY(0)',
-            },
-            'headroom--scrolled': {
-              transition: 'transform 200ms ease-in-out',
-            },
-            'headroom--unpinned': {
-              position: 'fixed',
-              transform: 'translateY(-100%)',
-            },
-            'headroom--pinned': {
-              position: 'fixed',
-              transform: 'translateY(0%)',
-            }
-          }}
-        >
-          <Header personalInfo={personalInfoData} />
+      <div>
+        <div className={navClasses}>
+          <div className="nav-inner">
+            <Header personalInfo={personalInfoData} />
+          </div>
         </div>
-        <div id="group2" className="parallax__group">
-          <div className="parallax__layer parallax__layer--base" />
-          <div className="parallax__layer parallax__layer--back">
-            <VelocityComponent
-              animation={{ translateY: '-10vh' }}
-              delay={2000}
-              duration={1000}
-              runOnMount
-            >
-              <h1 className="typed">
+        <div className="parallax" ref={addScrollListener}>
+
+          <div id="group2" className="parallax__group" ref="ele">
+            <div className="parallax__layer parallax__layer--base" />
+            <div className="parallax__layer parallax__layer--back">
+              <VelocityComponent
+                animation={{ translateY: '-10vh' }}
+                delay={2000}
+                duration={1000}
+                runOnMount
+              >
+                <h1 className="typed">
                 Ainuddin Faizan
                 <span className="typed-span">&nbsp;</span>
-              </h1>
-            </VelocityComponent>
-            <VelocityComponent
-              animation={{ opacity: [1, 0] }}
-              delay={3000}
-              duration={2000}
-              runOnMount
-            >
-              <h1 className="welcome">
+                </h1>
+              </VelocityComponent>
+              <VelocityComponent
+                animation={{ opacity: [1, 0] }}
+                delay={3000}
+                duration={2000}
+                runOnMount
+              >
+                <h1 className="welcome">
                 Welcome
               </h1>
-            </VelocityComponent>
+              </VelocityComponent>
+            </div>
           </div>
-        </div>
-        <div id="group3" className="parallax__group">
-          <div className="parallax__layer parallax__layer--fore">
-            <VelocityComponent
-              animation={'scroll'}
-              duration={150}
-              runOnMount
-            >
-              <div className="title">
+          <div id="group3" className="parallax__group">
+            <div className="parallax__layer parallax__layer--fore">
+              <VelocityComponent
+                animation={'scroll'}
+                duration={150}
+                runOnMount
+              >
+                <div className="title">
                 Some text
               </div>
-            </VelocityComponent>
-          </div>
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
+              </VelocityComponent>
+            </div>
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
               Base Layer
             </div>
-          </div>
-        </div>
-        <div id="group4" className="parallax__group">
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
-              Base Layer
             </div>
           </div>
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
+          <div id="group4" className="parallax__group">
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
               Base Layer
             </div>
-          </div>
-          <div className="parallax__layer parallax__layer--back">
-            <div className="title">
+            </div>
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
+              Base Layer
+            </div>
+            </div>
+            <div className="parallax__layer parallax__layer--back">
+              <div className="title">
               Background Layer
             </div>
+            </div>
           </div>
-        </div>
-        <div id="group5" className="parallax__group">
-          <div className="parallax__layer parallax__layer--fore">
-            <div className="title">
+          <div id="group5" className="parallax__group">
+            <div className="parallax__layer parallax__layer--fore">
+              <div className="title">
               Foreground Layer
             </div>
-          </div>
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
+            </div>
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
               Base Layer
             </div>
+            </div>
           </div>
-        </div>
-        <div id="group6" className="parallax__group">
-          <div className="parallax__layer parallax__layer--back">
-            <div className="title">
+          <div id="group6" className="parallax__group">
+            <div className="parallax__layer parallax__layer--back">
+              <div className="title">
               Background Layer
             </div>
-          </div>
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
+            </div>
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
               Base Layer
             </div>
+            </div>
           </div>
-        </div>
-        <div id="group7" className="parallax__group">
-          <div className="parallax__layer parallax__layer--base">
-            <div className="title">
+          <div id="group7" className="parallax__group">
+            <div className="parallax__layer parallax__layer--base">
+              <div className="title">
               Base Layer
+            </div>
             </div>
           </div>
         </div>
