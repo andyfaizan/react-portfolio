@@ -13,7 +13,6 @@ import { personalInfoData } from '../data/personalInfo'
 const VelocityComponent = require('velocity-react/velocity-component')
 // require('velocity-animate')
 // require('velocity-animate/velocity.ui')
-const Headroom = require('headroom.js/dist/headroom')
 const cx = require('classnames')
 // const ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
 /**
@@ -26,7 +25,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hidden: true
+      hidden: true,
+      lastTime: -1,
     }
     this.onScroll = this.onScroll.bind(this)
   }
@@ -37,14 +37,18 @@ class App extends Component {
   // }
 
   onScroll() {
+    if (this.state.lastTime !== -1 && new Date().getTime() - this.state.lastTime < 150) {
+      return
+    }
+    this.setState({ lastTime: new Date().getTime() })
     const element = this.refs.ele
     // console.log('Scrolled')
     // console.log(window)
     const offsets = element.getBoundingClientRect()
     // console.log(offsets)
     const yOffset = offsets.top
-    const heightToShow = 1850
-    if (yOffset > 0) {
+    // const heightToShow = 1850
+    if (yOffset >= 0) {
       this.setState({ hidden: true })
     }
     if (yOffset < 0) {
@@ -65,51 +69,22 @@ class App extends Component {
 
     const navClasses = cx({
       fixed: true,
-      hidden: this.state.hidden
+      // hidden: this.state.hidden
     })
 
-    const headerInit = (headerElement) => {
-      if (headerElement) {
-        console.log(headerElement)
-        console.log(Headroom)
-        const header = new Headroom(headerElement, {
-          tolerance: 5,
-          offset: 205,
-          classes: {
-            initial: 'animated',
-            pinned: 'slideDown',
-            unpinned: 'slideUp'
-          }
-        })
-        header.init()
-      }
-    }
-
-    const buttonInit = (buttonElement) => {
-      if (buttonElement) {
-        const bttHeadroom = new Headroom(buttonElement, {
-          tolerance: 0,
-          offset: 500,
-          classes: {
-            initial: 'slide',
-            pinned: 'slide--reset',
-            unpinned: 'slide--down'
-          }
-        })
-        bttHeadroom.init()
-      }
-    }
-
     return (
-      <div>
-        <div className={navClasses}>
-          <div className="nav-inner">
+      <div style={{ width: '100%' }}>
+        <VelocityComponent
+          animation={{ opacity: this.state.hidden ? 0 : 1, zIndex: 1100 }}
+          runOnMount
+        >
+          <div className={navClasses} style={{ position: 'fixed', top: 0, left: '0px', right: '0px' }}>
             <Header personalInfo={personalInfoData} />
           </div>
-        </div>
+        </VelocityComponent>
         <div className="parallax" ref={addScrollListener}>
 
-          <div id="group2" className="parallax__group" ref="ele">
+          <div id="group2" className="parallax__group">
             <div className="parallax__layer parallax__layer--base" />
             <div className="parallax__layer parallax__layer--back">
               <VelocityComponent
@@ -135,7 +110,7 @@ class App extends Component {
               </VelocityComponent>
             </div>
           </div>
-          <div id="group3" className="parallax__group">
+          <div id="group3" className="parallax__group" ref="ele">
             <div className="parallax__layer parallax__layer--fore">
               <VelocityComponent
                 animation={'scroll'}
