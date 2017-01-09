@@ -12,6 +12,11 @@ export default function Header({ personalInfo }) {
       <AppBar
         title={<HeaderContents personalInfo={personalInfo} />}
         iconElementLeft={<div />}
+        style={{
+          background: 'transparent',
+          'box-shadow': 'none',
+          color: 'white',
+        }}
       />
     </div>
   )

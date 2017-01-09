@@ -53,14 +53,27 @@ class App extends Component {
         node.addEventListener('scroll', this.onScroll)
       }
     }
+// opacity: [1, 0]
+// animation={{ opacity: this.state.hidden ? 0 : 1, zIndex: 1100 }}
 
     return (
       <div style={{ width: '100%' }}>
         <VelocityComponent
-          animation={{ opacity: this.state.hidden ? 0 : 1, zIndex: 1100 }}
+          animation={'fadeIn'}
           runOnMount
+          duration={3000}
+          delay={3000}
         >
-          <div style={{ position: 'fixed', top: 0, left: '0px', right: '0px' }}>
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: '0px',
+              right: '0px',
+              opacity: 0,
+              zIndex: 1100,
+            }}
+          >
             <Header personalInfo={personalInfoData} />
           </div>
         </VelocityComponent>
@@ -69,7 +82,7 @@ class App extends Component {
             <div className="parallax__layer parallax__layer--base" />
             <div className="parallax__layer parallax__layer--back">
               <VelocityComponent
-                animation={{ opacity: [1, 0] }}
+                animation={'fadeIn'}
                 duration={2000}
                 delay={3000}
                 runOnMount
@@ -77,7 +90,7 @@ class App extends Component {
                 <div className="withBackground" />
               </VelocityComponent>
               <VelocityComponent
-                animation={{ translateY: '-10vh' }}
+                animation={{ translateY: '-10vh', colorAlpha: 0 }}
                 delay={2000}
                 duration={1000}
                 runOnMount
