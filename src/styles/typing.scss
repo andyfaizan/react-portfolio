@@ -3,19 +3,9 @@
     to { width:0 }
 }
 
-@-webkit-keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: white }
-}
-
 @-moz-keyframes typing {
     from { width: 100% }
     to { width:0 }
-}
-
-@-moz-keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: white }
 }
 
 body { font-family: Consolas, monospace; }
@@ -51,7 +41,6 @@ body { font-family: Consolas, monospace; }
     right:0;
     width:0;
     background: black; /* same as background */
-    border-left: .1em solid black;
 
     -moz-box-sizing: border-box;
     box-sizing: border-box;

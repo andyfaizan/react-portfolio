@@ -6,6 +6,7 @@ import '../styles/parallax-effects.scss'
 import '../styles/headroom.scss'
 // import Footer from '../components/Footer';
 import Header from '../components/Header'
+import MyTimeline from '../components/MyTimeline'
 import { personalInfoData } from '../data/personalInfo'
 // import Statistics from '../components/Statistics';
 // import { startTime } from '../index'
@@ -64,10 +65,17 @@ class App extends Component {
           </div>
         </VelocityComponent>
         <div className="parallax" ref={addScrollListener}>
-
           <div id="group2" className="parallax__group">
             <div className="parallax__layer parallax__layer--base" />
             <div className="parallax__layer parallax__layer--back">
+              <VelocityComponent
+                animation={{ opacity: [1, 0] }}
+                duration={2000}
+                delay={3000}
+                runOnMount
+              >
+                <div className="withBackground" />
+              </VelocityComponent>
               <VelocityComponent
                 animation={{ translateY: '-10vh' }}
                 delay={2000}
@@ -75,8 +83,8 @@ class App extends Component {
                 runOnMount
               >
                 <h1 className="typed">
-                Ainuddin Faizan
-                <span className="typed-span">&nbsp;</span>
+                  Ainuddin Faizan
+                  <span className="typed-span">&nbsp;</span>
                 </h1>
               </VelocityComponent>
               <VelocityComponent
@@ -86,22 +94,14 @@ class App extends Component {
                 runOnMount
               >
                 <h1 className="welcome">
-                Welcome
-              </h1>
+                  Welcome
+                </h1>
               </VelocityComponent>
             </div>
           </div>
           <div id="group3" className="parallax__group" ref="ele">
             <div className="parallax__layer parallax__layer--fore">
-              <VelocityComponent
-                animation={'scroll'}
-                duration={150}
-                runOnMount
-              >
-                <div className="title">
-                Some text
-              </div>
-              </VelocityComponent>
+              <MyTimeline />
             </div>
             <div className="parallax__layer parallax__layer--base">
               <div className="title">
