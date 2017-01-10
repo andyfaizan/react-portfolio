@@ -5,8 +5,9 @@ import '../styles/typing.scss'
 import '../styles/parallax-effects.scss'
 import '../styles/headroom.scss'
 import '../styles/main.scss'
-import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
+import About from '../components/About'
 import MyTimeline from '../components/MyTimeline'
 import { personalInfoData } from '../data/personalInfo'
 // import Statistics from '../components/Statistics';
@@ -65,7 +66,7 @@ class App extends Component {
           animation={'fadeIn'}
           runOnMount
           duration={3000}
-          delay={3000}
+          delay={4000}
         >
           <div
             style={{
@@ -123,7 +124,7 @@ class App extends Component {
           </div>
           <div id="group3" className="parallax__group" ref="ele">
             <div className="parallax__layer parallax__layer--fore">
-              <MyTimeline />
+              <About />
             </div>
             <div className="parallax__layer parallax__layer--base">
               <div className="title">
