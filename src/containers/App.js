@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import '../styles/typing.scss'
 import '../styles/parallax-effects.scss'
 import '../styles/headroom.scss'
-// import Footer from '../components/Footer';
+import '../styles/main.scss'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import MyTimeline from '../components/MyTimeline'
 import { personalInfoData } from '../data/personalInfo'
@@ -31,6 +32,7 @@ class App extends Component {
   //   actions.updateBenchmark(new Date().getTime() - startTime)
   // }
 
+  // minimize calls based on position and scroll direction
   onScroll() {
     if (this.state.lastTime !== -1 && new Date().getTime() - this.state.lastTime < 150) {
       return
@@ -39,10 +41,11 @@ class App extends Component {
     const element = this.refs.ele
     const offsets = element.getBoundingClientRect()
     const yOffset = offsets.top
-    if (yOffset >= 0) {
+    const navBarHeight = 64
+    if (yOffset >= navBarHeight) {
       this.setState({ hidden: true })
     }
-    if (yOffset < 0) {
+    if (yOffset < navBarHeight) {
       this.setState({ hidden: false })
     }
   }
@@ -72,6 +75,12 @@ class App extends Component {
               right: '0px',
               opacity: 0,
               zIndex: 1100,
+              backgroundColor: this.state.hidden ? 'transparent' : '#00897B',
+              WebkitTransition: 'background-color 500ms linear',
+              MozTransition: 'background-color 500ms linear',
+              OTransition: 'background-color 500ms linear',
+              msTransition: 'background-color 500ms linear',
+              transition: 'background-color 500ms linear',
             }}
           >
             <Header personalInfo={personalInfoData} />
@@ -167,7 +176,8 @@ class App extends Component {
             <div className="parallax__layer parallax__layer--base">
               <div className="title">
               Base Layer
-            </div>
+              <Footer personalInfo={personalInfoData} />
+              </div>
             </div>
           </div>
         </div>

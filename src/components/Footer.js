@@ -7,6 +7,7 @@ export default class Footer extends Component {
       <footer>
         <span id="footer-text-wrap">
         Built by {personalInfo.name}.
+        Background picture by <a href="https://unsplash.com/@berry807">Berry van der Velden</a>
         </span>
       </footer>
     )

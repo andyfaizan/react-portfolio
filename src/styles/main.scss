@@ -11,6 +11,13 @@ $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 $project-container-color: #ece9df;
 
+$primary1-color: #00ACC1; // teal600
+$primary2-color: #B2DFDB; //teal100
+$primary3-color: #00695C; //teal800
+$accent1-color: #eeff41; //limeA200
+$accent2-color: #F4FF81; //limeA100
+$accent3-color: #C6FF00; //limeA400
+
 @import "bourbon";
 $color-snow: #fff;
 $color-silver: #c5c5c5;
@@ -192,25 +199,25 @@ $statistics-color: $accent-black;
 //   left: 0px;
 // }
 //
-// footer {
-//   font-size: 0.75em;
-//   text-align: center;
-//   padding-top: 5vh;
-//
-//   a {
-//     text-decoration: none;
-//     color: inherit;
-//
-//     &:hover {
-//       color: $accent-blue;
-//     }
-//   }
-//
-//   #heart{
-//     color: $accent-red;
-//   }
-// }
-//
+footer {
+  font-size: 0.75em;
+  text-align: center;
+  padding-top: 5vh;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $accent-blue;
+    }
+  }
+
+  #heart{
+    color: $accent-red;
+  }
+}
+
 
 .header a {
   color: $header-text-color;
@@ -226,7 +233,7 @@ ul.nav{
 .nav-link{
   border-top: 4px solid transparent;
   transition: border-top .3s;
-  &:hover{border-top: 4px solid dodgerblue;}
+  &:hover{border-top: 4px solid $accent1-color;}
   color: white;
 }
 //
@@ -236,24 +243,24 @@ ul.nav{
   }
 }
 //
-// .icon {
-//   font-size: 1.4em;
-// }
+.icon {
+  font-size: 1.4em;
+}
 //
 .nav > li > a:focus,
 .nav > li > a:hover {
-  // color: white;
+  color: white;
   text-decoration: none;
   background-color: transparent;
 }
 //
-// .footer_icon {
-//   height: 18px;
-//   width: auto;
-//   @media only screen and (max-device-width: 600px) {
-//     height: 5rem;
-//   }
-// }
+.footer_icon {
+  height: 18px;
+  width: auto;
+  @media only screen and (max-device-width: 600px) {
+    height: 5rem;
+  }
+}
 //
 // .tech-icon-container {
 //   display: flex;
@@ -280,9 +287,9 @@ ul.nav{
 //   background-color: $accent-gray;
 // }
 //
-// .navbar-brand {
-//   line-height: normal;
-//   @media only screen and (max-device-width: 600px) {
-//     font-size: 3rem;
-//   }
-// }
+.navbar-brand {
+  line-height: normal;
+  @media only screen and (max-device-width: 600px) {
+    font-size: 3rem;
+  }
+}

@@ -14,8 +14,7 @@ export default function Header({ personalInfo }) {
         iconElementLeft={<div />}
         style={{
           background: 'transparent',
-          'box-shadow': 'none',
-          color: 'white',
+          boxShadow: 'none',
         }}
       />
     </div>
