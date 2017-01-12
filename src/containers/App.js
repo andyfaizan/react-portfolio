@@ -8,7 +8,6 @@ import '../styles/main.scss'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import About from '../components/About'
-import MyTimeline from '../components/MyTimeline'
 import { personalInfoData } from '../data/personalInfo'
 // import Statistics from '../components/Statistics';
 // import { startTime } from '../index'
@@ -34,12 +33,11 @@ class App extends Component {
   // }
 
   // minimize calls based on position and scroll direction
-  onScroll() {
+  onScroll(element) {
     if (this.state.lastTime !== -1 && new Date().getTime() - this.state.lastTime < 150) {
       return
     }
     this.setState({ lastTime: new Date().getTime() })
-    const element = this.refs.ele
     const offsets = element.getBoundingClientRect()
     const yOffset = offsets.top
     const navBarHeight = 64
@@ -54,11 +52,9 @@ class App extends Component {
   render() {
     const addScrollListener = (node) => {
       if (node) {
-        node.addEventListener('scroll', this.onScroll)
+        node.addEventListener('scroll', () => this.onScroll(this.refs.ele))
       }
     }
-// opacity: [1, 0]
-// animation={{ opacity: this.state.hidden ? 0 : 1, zIndex: 1100 }}
 
     return (
       <div style={{ width: '100%' }}>
@@ -69,19 +65,9 @@ class App extends Component {
           delay={4000}
         >
           <div
+            className="my-nav-bar"
             style={{
-              position: 'fixed',
-              top: 0,
-              left: '0px',
-              right: '0px',
-              opacity: 0,
-              zIndex: 1100,
               backgroundColor: this.state.hidden ? 'transparent' : '#00897B',
-              WebkitTransition: 'background-color 500ms linear',
-              MozTransition: 'background-color 500ms linear',
-              OTransition: 'background-color 500ms linear',
-              msTransition: 'background-color 500ms linear',
-              transition: 'background-color 500ms linear',
             }}
           >
             <Header personalInfo={personalInfoData} />
@@ -122,9 +108,9 @@ class App extends Component {
               </VelocityComponent>
             </div>
           </div>
-          <div id="group3" className="parallax__group" ref="ele">
+          <div id="group3" className="parallax__group" ref="ele" style={{ height: '120vh' }}>
             <div className="parallax__layer parallax__layer--fore">
-              <About />
+              <About show={!this.state.hidden} />
             </div>
             <div className="parallax__layer parallax__layer--base">
               <div className="title">
