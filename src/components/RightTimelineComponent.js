@@ -10,7 +10,7 @@ const propTypes = {
 
 const style = {
   height: '30vh',
-  width: '35vw',
+  width: '30vw',
   margin: 20,
   textAlign: 'center',
   // display: 'inline-block',
@@ -25,7 +25,7 @@ function RightTimelineComponent({ show }) {
     <div>
       <VelocityComponent
         animation={{ translateX: show ? '-10vw' : 0, opacity: show ? 1 : 0 }}
-        duration={1000}
+        duration={500}
         delay={500}
       >
         <Paper className="pull-right" style={style} zDepth={1} >
