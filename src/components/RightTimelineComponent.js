@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
 
 const VelocityComponent = require('velocity-react/velocity-component')
+const Image = require('../resources/code.jpg')
 
 const propTypes = {
   show: PropTypes.bool,
@@ -15,7 +16,7 @@ const style = {
   // display: 'inline-block',
   // position: 'absolute',
   // float: 'left',
-  right: '100%',
+  right: '10vw',
   opacity: 0
 }
 
@@ -25,9 +26,11 @@ function RightTimelineComponent({ show }) {
       <VelocityComponent
         animation={{ translateX: show ? '-10vw' : 0, opacity: show ? 1 : 0 }}
         duration={1000}
-        delay={200}
+        delay={500}
       >
-        <Paper className="pull-right" style={style} zDepth={1} />
+        <Paper className="pull-right" style={style} zDepth={1} >
+          <img src={Image} height={'100%'} role="presentation" />
+        </Paper>
       </VelocityComponent>
     </div>
   )
