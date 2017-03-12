@@ -4,7 +4,8 @@ const personalInfoData = {
   github: 'https://github.com/andyfaizan',
   angelList: 'https://angel.co/andyfaizan',
   email: 'mailto:andyfaizan@gmail.com',
-  resume: 'https://drive.google.com/file/d/0B0ybdrrxpkBrSWMxZ3Z2M282UE0/view?usp=sharing'
+  resume: 'https://drive.google.com/file/d/0B0ybdrrxpkBrSWMxZ3Z2M282UE0/view?usp=sharing',
+  stackOverflow: 'http://stackoverflow.com/story/ainuddin-faizan'
 }
 
 export { personalInfoData }

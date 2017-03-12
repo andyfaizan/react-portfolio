@@ -60,6 +60,16 @@ function HeaderContents({ personalInfo }) {
             <i className="fa fa-angellist icon" />
           </a>
         </li>
+        <li>
+          <a
+            href={personalInfo.stackOverflow}
+            className="nav-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa fa-stack-overflow icon" />
+          </a>
+        </li>
       </ul>
     </div>
   )
