@@ -76,39 +76,39 @@ class App extends Component {
         <div className="parallax" ref={addScrollListener}>
           <div id="group2" className="parallax__group">
             <div className="parallax__layer parallax__layer--base" />
-            <div className="parallax__layer parallax__layer--back">
-              <VelocityComponent
-                animation={'fadeIn'}
-                duration={2000}
-                delay={3000}
-                runOnMount
-              >
-                <div className="withBackground" />
-              </VelocityComponent>
-              <VelocityComponent
-                animation={{ translateY: '-10vh', colorAlpha: 0 }}
-                delay={2000}
-                duration={1000}
-                runOnMount
-              >
-                <h1 className="typed">
+            {/* <div className="parallax__layer parallax__layer--back"> */}
+            <VelocityComponent
+              animation={'fadeIn'}
+              duration={2000}
+              delay={3000}
+              runOnMount
+            >
+              <div className="withBackground" />
+            </VelocityComponent>
+            <VelocityComponent
+              animation={{ translateY: '-10vh', colorAlpha: 0 }}
+              delay={2000}
+              duration={1000}
+              runOnMount
+            >
+              <h1 className="typed">
                   Ainuddin Faizan
                   <span className="typed-span">&nbsp;</span>
-                </h1>
-              </VelocityComponent>
-              <VelocityComponent
-                animation={{ opacity: [1, 0] }}
-                delay={3000}
-                duration={2000}
-                runOnMount
-              >
-                <h1 className="welcome">
+              </h1>
+            </VelocityComponent>
+            <VelocityComponent
+              animation={{ opacity: [1, 0] }}
+              delay={3000}
+              duration={2000}
+              runOnMount
+            >
+              <h1 className="welcome">
                   Welcome
                 </h1>
-              </VelocityComponent>
-            </div>
+            </VelocityComponent>
+            {/* </div> */}
           </div>
-          <div id="group3" className="parallax__group" ref="ele" style={{ height: '120vh' }}>
+          {/* <div id="group3" className="parallax__group" ref="ele" style={{ height: '120vh' }}>
             <div className="parallax__layer parallax__layer--fore">
               <About show={!this.state.hidden} />
             </div>
@@ -166,7 +166,7 @@ class App extends Component {
               <Footer personalInfo={personalInfoData} />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     )

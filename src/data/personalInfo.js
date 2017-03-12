@@ -1,10 +1,10 @@
 const personalInfoData = {
   name: 'Ainuddin Faizan',
-  linkedIn: 'https://www.linkedin.com/',
-  github: 'https://github.com/',
-  angelList: 'https://angel.co/',
-  email: 'mailto:you@gmail.com',
-  resume: 'https://www.dropbox.com/'
+  linkedIn: 'https://www.linkedin.com/in/ainuddinfaizan',
+  github: 'https://github.com/andyfaizan',
+  angelList: 'https://angel.co/andyfaizan',
+  email: 'mailto:andyfaizan@gmail.com',
+  resume: 'https://drive.google.com/file/d/0B0ybdrrxpkBrSWMxZ3Z2M282UE0/view?usp=sharing'
 }
 
 export { personalInfoData }
