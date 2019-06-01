@@ -1,18 +1,18 @@
-const path = require('path');
-const webpack = require('webpack');
-const bourbon = require('node-bourbon').includePaths;
+const path = require("path");
+const webpack = require("webpack");
+const bourbon = require("node-bourbon").includePaths;
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: "cheap-module-eval-source-map",
   entry: [
-    'eventsource-polyfill', // necessary for hot reloading with IE
-    'webpack-hot-middleware/client',
-    './src/index'
+    "eventsource-polyfill", // necessary for hot reloading with IE
+    "webpack-hot-middleware/client",
+    "./src/index"
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/static/"
   },
   plugins: [
     /**
@@ -32,24 +32,28 @@ module.exports = {
      * Here, we use it to specify a development build.
      */
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
+      "process.env.NODE_ENV": JSON.stringify("development")
+    })
   ],
   module: {
     loaders: [
       {
         test: /\.js?/,
         exclude: [/node_modules/, /styles/],
-        loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        loaders: ["babel"],
+        include: path.join(__dirname, "src")
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass?includePaths[]=' + bourbon
+        loader: "style!css!sass?includePaths[]=" + bourbon
       },
-      { 
+      {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=8192'
+        loader: "url-loader?limit=8192"
+      },
+      {
+        test: /\.css$/i,
+        loaders: ["style-loader", "css-loader"]
       }
     ]
   }
