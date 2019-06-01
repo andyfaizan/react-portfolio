@@ -63,6 +63,7 @@
     "react-redux": "^4.1.1",
     "react-sticky": "^5.0.5",
     "react-tap-event-plugin": "^1.0.0",
+    "react-vertical-timeline-component": "^2.3.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "url-loader": "^0.5.7",
