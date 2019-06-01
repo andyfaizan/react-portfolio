@@ -1,30 +1,30 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from "react";
 // import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import '../styles/typing.scss'
-import '../styles/parallax-effects.scss'
-import '../styles/headroom.scss'
-import '../styles/main.scss'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import About from '../components/About'
-import { personalInfoData } from '../data/personalInfo'
+import { connect } from "react-redux";
+import "../styles/typing.scss";
+import "../styles/parallax-effects.scss";
+import "../styles/headroom.scss";
+import "../styles/main.scss";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import About from "../components/About";
+import NewTimeline from "../components/NewTimeline";
+import { personalInfoData } from "../data/personalInfo";
 // import Statistics from '../components/Statistics';
 // import { startTime } from '../index'
 
-const VelocityComponent = require('velocity-react/velocity-component')
+const VelocityComponent = require("velocity-react/velocity-component");
 // require('velocity-animate')
 // require('velocity-animate/velocity.ui')
 
 class App extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       hidden: true,
-      lastTime: -1,
-    }
-    this.onScroll = this.onScroll.bind(this)
+      lastTime: -1
+    };
+    this.onScroll = this.onScroll.bind(this);
   }
 
   // componentDidMount() {
@@ -34,32 +34,35 @@ class App extends Component {
 
   // minimize calls based on position and scroll direction
   onScroll(element) {
-    if (this.state.lastTime !== -1 && new Date().getTime() - this.state.lastTime < 150) {
-      return
+    if (
+      this.state.lastTime !== -1 &&
+      new Date().getTime() - this.state.lastTime < 150
+    ) {
+      return;
     }
-    this.setState({ lastTime: new Date().getTime() })
-    const offsets = element.getBoundingClientRect()
-    const yOffset = offsets.top
-    const navBarHeight = 64
+    this.setState({ lastTime: new Date().getTime() });
+    const offsets = element.getBoundingClientRect();
+    const yOffset = offsets.top;
+    const navBarHeight = 64;
     if (yOffset >= navBarHeight) {
-      this.setState({ hidden: true })
+      this.setState({ hidden: true });
     }
     if (yOffset < navBarHeight) {
-      this.setState({ hidden: false })
+      this.setState({ hidden: false });
     }
   }
 
   render() {
-    const addScrollListener = (node) => {
+    const addScrollListener = node => {
       if (node) {
-        node.addEventListener('scroll', () => this.onScroll(this.refs.ele))
+        node.addEventListener("scroll", () => this.onScroll(this.refs.ele));
       }
-    }
+    };
 
     return (
-      <div style={{ width: '100%' }}>
+      <div style={{ width: "100%" }}>
         <VelocityComponent
-          animation={'fadeIn'}
+          animation={"fadeIn"}
           runOnMount
           duration={3000}
           delay={4000}
@@ -67,7 +70,7 @@ class App extends Component {
           <div
             className="my-nav-bar"
             style={{
-              backgroundColor: this.state.hidden ? 'transparent' : '#00897B',
+              backgroundColor: this.state.hidden ? "transparent" : "#00897B"
             }}
           >
             <Header personalInfo={personalInfoData} />
@@ -78,7 +81,7 @@ class App extends Component {
             <div className="parallax__layer parallax__layer--base" />
             {/* <div className="parallax__layer parallax__layer--back"> */}
             <VelocityComponent
-              animation={'fadeIn'}
+              animation={"fadeIn"}
               duration={2000}
               delay={3000}
               runOnMount
@@ -86,14 +89,14 @@ class App extends Component {
               <div className="withBackground" />
             </VelocityComponent>
             <VelocityComponent
-              animation={{ translateY: '-10vh', colorAlpha: 0 }}
+              animation={{ translateY: "-10vh", colorAlpha: 0 }}
               delay={2000}
               duration={1000}
               runOnMount
             >
               <h1 className="typed">
-                  Ainuddin Faizan
-                  <span className="typed-span">&nbsp;</span>
+                Ainuddin Faizan
+                <span className="typed-span">&nbsp;</span>
               </h1>
             </VelocityComponent>
             <VelocityComponent
@@ -102,10 +105,11 @@ class App extends Component {
               duration={2000}
               runOnMount
             >
-              <h1 className="welcome">
-                  Welcome
-                </h1>
+              <h1 className="welcome">Welcome</h1>
             </VelocityComponent>
+            <div style={{ backgroundColor: "black" }}>
+              <NewTimeline />
+            </div>
             {/* </div> */}
           </div>
           {/* <div id="group3" className="parallax__group" ref="ele" style={{ height: '120vh' }}>
@@ -169,25 +173,25 @@ class App extends Component {
           </div> */}
         </div>
       </div>
-    )
+    );
   }
 }
 
 App.propTypes = {
   // projects: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
   // benchmark: PropTypes.number.isRequired,
   // personalInfo: PropTypes.object.isRequired,
   // showSubComponent: PropTypes.bool.isRequired,
-}
+};
 
 function mapStateToProps(state) {
   return {
     projects: state.projects,
     benchmark: state.benchmark,
     personalInfo: state.personalInfo,
-    showSubComponent: 'true',
-  }
+    showSubComponent: "true"
+  };
 }
 
 // function mapDispatchToProps(dispatch) {
@@ -197,6 +201,6 @@ function mapStateToProps(state) {
 // }
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // mapDispatchToProps
-)(App)
+)(App);
